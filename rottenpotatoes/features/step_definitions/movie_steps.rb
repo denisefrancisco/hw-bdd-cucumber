@@ -12,7 +12,9 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  fail if e1 > e2
+  content = page.body
+  cond = (content =~ /#{e2}.*#{e1}/)
+  expect(cond).to eq(nil)
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
 end
@@ -23,11 +25,20 @@ end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
+  puts rating_list
+  puts uncheck
+  new_r_list = rating_list.split(",")
+  puts new_r_list
+  new_r_list.each do |rating|
+    if uncheck then
+       uncheck(rating)
+    else
+      check(rating)
+    end
+  end
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  fail "Unimplemented"
 end
-
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   fail "Unimplemented"
