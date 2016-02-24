@@ -1,4 +1,4 @@
-# Add a declarative step here for populating the DB with movies.
+
 
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie| 
@@ -12,9 +12,10 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+  page_content = page.body
+  page_content =~ e1 < e2
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
