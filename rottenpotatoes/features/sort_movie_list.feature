@@ -30,7 +30,7 @@ Scenario: sort movies alphabetically
   Then I should see "Chocolat" before "Raiders of the Lost Ark"
   Then I should see "Raiders of the Lost Ark" before "The Help"
   Then I should see "The Help" before "The Incredibles"
-  Then I should see "Te Incredibles" before "The Terminator"
+  Then I should see "The Incredibles" before "The Terminator"
   Then I should see "The Terminator" before "When Harry Met Sally"
   
 
