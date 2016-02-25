@@ -30,9 +30,11 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   new_r_list = rating_list.split(",")
   puts new_r_list
   new_r_list.each do |rating|
-    if uncheck then
-       uncheck(rating)
+    if uncheck == "un" then
+      puts "in UNCHECK loop!"
+      uncheck(rating)
     else
+      puts "in check loop!"
       check(rating)
     end
   end
@@ -42,3 +44,4 @@ Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   fail "Unimplemented"
 end
+
